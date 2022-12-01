@@ -8,10 +8,8 @@ val input = File("Data/DayOne.txt").readText()
 
 val values = input.split("\n\n")
     .map {
-        it.trim()
         it.split("\n")
             .map {
-                it.trim()
                 it.toInt()
             }
             .sum()
