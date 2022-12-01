@@ -28,4 +28,3 @@ val sorted = values.sorted().reversed()
 val topThree = sorted.slice(0..2)
 val output2 = topThree.sum()
 println("Top Three Total: " + output2)
-
