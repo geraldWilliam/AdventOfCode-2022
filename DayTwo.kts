@@ -2,11 +2,13 @@
 
 import java.io.File
 
-val input = File("Data/DayTwo.txt").readText().trim().split("\n").map {
+// Shared
+
+val input = File("Data/DayTwo.txt").readText()
+
+val values = input.trim().split("\n").map {
     it.split(" ")
 }
-
-// Shared
 
 sealed class Move {
     open abstract val beats: Move
@@ -52,7 +54,7 @@ fun score(us: Move, them: Move): Int {
 
 // Part One
 
-val scores1 = input.map {
+val scores1 = values.map {
     score(move(it[1]), move(it[0]))
 }
 
@@ -73,7 +75,7 @@ fun response(other: Move, result: Result): Move {
     }
 }
 
-val scores2 = input.map {
+val scores2 = values.map {
     val them = move(it[0])
     val result = when (it[1]) {
         "X" -> Result.LOSE

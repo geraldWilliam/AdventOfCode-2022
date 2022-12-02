@@ -2,9 +2,9 @@
 
 import java.io.File
 
-val input = File("Data/DayOne.txt").readText()
-
 // Shared
+
+val input = File("Data/DayOne.txt").readText()
 
 val values = input.trim().split("\n\n").map {
     it.split("\n").map { it.toInt() }.sum()
