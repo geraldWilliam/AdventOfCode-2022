@@ -7,9 +7,7 @@ val input = File("Data/DayOne.txt").readText()
 // Shared
 
 val values = input.trim().split("\n\n").map {
-    it.split("\n").map {
-        it.toInt()
-    }.sum()
+    it.split("\n").map { it.toInt() }.sum()
 }
 
 // Part One
