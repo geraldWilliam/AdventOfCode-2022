@@ -2,7 +2,7 @@
 
 import java.io.File
 
-val input = File("Data/DayTwo.txt").readText().split("\n").map {
+val input = File("Data/DayTwo.txt").readText().trim().split("\n").map {
 	it.split(" ")
 }
 
@@ -32,27 +32,20 @@ object SCISSORS: Move() {
 }
 
 fun move(input: String): Move {
-	if (input == "A" || input == "X") {
-		return ROCK
+	return when (input) {
+		"A", "X" -> ROCK
+		"B", "Y" -> PAPER
+		"C", "Z" -> SCISSORS
+		else -> throw Exception()
 	}
-    if (input == "B" || input == "Y") {
-        return PAPER
-	}
-    if (input == "C" || input == "Z") {
-        return SCISSORS
-	}
-    throw Exception("You blew it")
 }
 
 fun score(us: Move, them: Move): Int {
 	if (us.beats(them)) {
-		// Win
 	    return us.score + 6
 	} else if (them.beats(us)) {
-		// Lose
 	    return us.score
 	} else {
-		// Draw
 	    return us.score + 3
 	}	
 }
@@ -76,7 +69,7 @@ fun response(other: Move, result: Result): Move {
 		Result.WIN -> all.first { it.beats(other) }
 		Result.LOSE -> all.first { other.beats(it) }
 		Result.DRAW -> other
-		else -> throw Exception("You blew it" + result)	
+		else -> throw Exception()	
 	}
 }
 
@@ -86,7 +79,7 @@ val scores2 = input.map {
 		"X" -> Result.LOSE
 		"Y" -> Result.DRAW
 		"Z" -> Result.WIN
-		else -> throw Exception("You blew it")
+		else -> throw Exception()
 	}
 	val us = response(them, result)
 	score(us, them)
