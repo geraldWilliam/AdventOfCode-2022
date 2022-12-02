@@ -6,14 +6,11 @@ val input = File("Data/DayOne.txt").readText()
 
 // Shared
 
-val values = input.split("\n\n")
-    .map {
-        it.split("\n")
-            .map {
-                it.toInt()
-            }
-            .sum()
-    }
+val values = input.split("\n\n").map {
+    it.split("\n").map {
+        it.toInt()
+    }.sum()
+}
 
 // Part One
 
