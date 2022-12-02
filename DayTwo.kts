@@ -17,15 +17,18 @@ sealed class Move {
 }
 
 object ROCK : Move() {
-    override val beats = SCISSORS override val score = 1
+    override val beats = SCISSORS
+    override val score = 1
 }
 
 object PAPER : Move() {
-    override val beats = ROCK override val score = 2
+    override val beats = ROCK
+    override val score = 2
 }
 
 object SCISSORS : Move() {
-    override val beats = PAPER override val score = 3
+    override val beats = PAPER
+    override val score = 3
 }
 
 fun move(input: String): Move {
