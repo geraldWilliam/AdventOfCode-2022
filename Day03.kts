@@ -8,15 +8,6 @@ val input = File("Data/Day03.txt").readText()
 
 val values = input.trim().split("\n")
 
-// Find the character that occurs in both the first half and the second half of the input.
-
-val duplicates = values.map {
-	val boundary = it.count() / 2
-	val firstCompartment = it.slice(0..boundary - 1)
-	val secondCompartment = it.slice(boundary..it.count() - 1)
-	firstCompartment.first { secondCompartment.contains(it) }
-}
-
 // Sum the 'priority' values of the results.
 
 val alphabet = "abcdefghijklmnopqrstuvwxyz".map { it }
@@ -34,6 +25,13 @@ fun score(input: Char): Int {
 }
 
 // Part One
+
+val duplicates = values.map {
+	val boundary = it.count() / 2
+	val firstCompartment = it.slice(0..boundary - 1)
+	val secondCompartment = it.slice(boundary..it.count() - 1)
+	firstCompartment.first { secondCompartment.contains(it) }
+}
 
 val output1 = duplicates.map {
 	score(it)
