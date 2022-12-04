@@ -8,8 +8,6 @@ val input = File("Data/Day03.txt").readText()
 
 val values = input.trim().split("\n")
 
-// Sum the 'priority' values of the results.
-
 val alphabet = "abcdefghijklmnopqrstuvwxyz".map { it }
 
 val uppercaseAlphabet = alphabet.map { it.uppercase().single() }
