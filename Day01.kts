@@ -1,10 +1,10 @@
-// DayOne.kts
+// Day01.kts
 
 import java.io.File
 
 // Shared
 
-val input = File("Data/DayOne.txt").readText()
+val input = File("Data/Day01.txt").readText()
 
 val values = input.trim().split("\n\n").map {
     it.split("\n").map { it.toInt() }.sum()

@@ -1,10 +1,10 @@
-// DayTwo.kts
+// Day02.kts
 
 import java.io.File
 
 // Shared
 
-val input = File("Data/DayTwo.txt").readText()
+val input = File("Data/Day02.txt").readText()
 
 val values = input.trim().split("\n").map {
     it.split(" ")
