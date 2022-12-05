@@ -14,13 +14,21 @@ val values = input.trim().split("\n").map {
 	}
 }
 
-val enclosedRanges = values.map {
-	val left = it.first()
-	val right = it.last()
-	if (left[0] >= right[0] && left[1] <= right[1]) {
-		left
-	} else if (right[0] >= left[0] && right[1] <= left[1]) {
+val ranges = values.map {
+	it.map {
+		it[0]..it[1]
+	}
+} 
+
+// Part One
+
+val enclosedRanges = ranges.map {
+	val left = it[0]
+	val right = it[1]
+	if (left.start <= right.start && left.endInclusive >= right.endInclusive) {
 		right
+	} else if (right.start <= left.start && right.endInclusive >= left.endInclusive) {
+		left
 	} else {
 		null
 	}
@@ -30,13 +38,14 @@ val output1 = enclosedRanges.filterNotNull().count()
 
 println("Number of enclosed ranges: " + output1)
 
-val overlappingRanges = values.map {
-	// val left = it.first()
-	// val right = it.last()
-	val ranges = it.map {
-		it[0]..it[1]
-	}
-	ranges.first().intersects(ranges.last())
+// Part Two
+
+val overlappingRanges = ranges.map {
+	val left = it[0]
+	val right = it[1]
+	left.intersect(right).count() > 0
 }
 
-println(overlappingRanges.count())
+val output2 = overlappingRanges.filter { it == true } .count()
+
+println("Number of overlapping ranges: " + output2)
